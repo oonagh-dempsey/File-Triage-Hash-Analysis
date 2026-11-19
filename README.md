@@ -43,7 +43,9 @@ For example:
 
 `python file_triage.py "C:\path\to\folder"`
 
-The selected folder must contain a `hashes_reference.csv` file and the files to be analysed must currently have names beginning with `sample_`.
+The selected folder must contain a `hashes_reference.csv` file. The program analyses regular files regardless of their names, excluding `hashes_reference.csv` and `README.txt`.
+
+This allows the program to analyse files with different filenames and extensions.
 
 If the specified folder does not exist, the program displays an error message and exits.
 
