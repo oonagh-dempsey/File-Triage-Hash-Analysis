@@ -1,0 +1,54 @@
+FILE TRIAGE & HASH ANALYSIS REPORT
+=============================================
+
+Filename: sample_a.txt
+Extension: .txt
+Size: 153 bytes
+Modified: 2026-11-19 01:26:53
+SHA-256: 0682153a5a559dbbb265e02db83455d4f8ae7a0121643439055280d289c437ad
+Status: KNOWN - Known Baseline Text
+
+Filename: sample_b.txt
+Extension: .txt
+Size: 153 bytes
+Modified: 2026-11-19 01:26:53
+SHA-256: 0682153a5a559dbbb265e02db83455d4f8ae7a0121643439055280d289c437ad
+Status: KNOWN - Known Baseline Text
+
+Filename: sample_c.txt
+Extension: .txt
+Size: 154 bytes
+Modified: 2026-11-19 01:26:53
+SHA-256: 776e6bb134664392f337a18cbb3757a8a9d35a43c874b14334d77fb0e6cc359a
+Status: UNKNOWN - No reference match
+
+Filename: sample_d.bin
+Extension: .bin
+Size: 2048 bytes
+Modified: 2026-11-19 01:26:53
+SHA-256: ebdf6e5999be272c66881adf12358e341385ec8f291cecaf293af9fb8b166c54
+Status: KNOWN - Known Baseline Binary
+
+Filename: sample_e.bin
+Extension: .bin
+Size: 537 bytes
+Modified: 2026-11-19 01:26:53
+SHA-256: 7676611ef9c01f00a97c51181218c37628753ede5705692a3dad54eb68c11450
+Status: UNKNOWN - No reference match
+
+SUMMARY
+---------------------------------------------
+Files processed: 5
+Known reference matches: 3
+Unknown files: 2
+
+DUPLICATE FILES
+---------------------------------------------
+SHA-256: 0682153a5a559dbbb265e02db83455d4f8ae7a0121643439055280d289c437ad
+Files: sample_a.txt, sample_b.txt
+
+
+ANALYST NOTES
+A reference match identifies identical file content.
+An unknown hash does not prove that a file is malicious.
+Hash analysis alone cannot determine file behaviour.
