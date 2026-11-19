@@ -29,6 +29,24 @@ The program generates a text report containing the analysis results.
 
    `python file_triage.py`
 
+### Running with a Custom Folder
+
+The program can also analyse a folder specified by the user.
+
+To analyse the supplied samples folder, run:
+
+`python file_triage.py samples`
+
+To analyse another folder, replace `samples` with its folder path.
+
+For example:
+
+`python file_triage.py "C:\path\to\folder"`
+
+The selected folder must contain a `hashes_reference.csv` file and the files to be analysed must currently have names beginning with `sample_`.
+
+If the specified folder does not exist, the program displays an error message and exits.
+
 5. View the results in Command Prompt.
 6. Open `triage_report.txt` to view the generated report.
 
