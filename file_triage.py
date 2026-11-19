@@ -3,9 +3,12 @@ from pathlib import Path
 import hashlib
 import csv
 from datetime import datetime
+import sys
 
-
-samples_folder = Path(__file__).parent / "samples"
+if len(sys.argv) > 1:
+    samples_folder = Path(sys.argv[1]).expanduser()
+else:
+    samples_folder = Path(__file__).parent / "samples"
 
 if samples_folder.exists():
     print("Samples folder found!")
