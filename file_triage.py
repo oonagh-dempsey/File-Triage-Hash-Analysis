@@ -5,12 +5,14 @@ import csv
 from datetime import datetime
 import sys
 
+
 if len(sys.argv) > 1:
     samples_folder = Path(sys.argv[1]).expanduser()
 else:
     samples_folder = Path(__file__).parent / "samples"
 
-if samples_folder.exists():
+
+if samples_folder.is_dir():
     print("Samples folder found!")
 
     for file in samples_folder.iterdir():
@@ -39,7 +41,7 @@ def calculate_sha256(file_path):
 print("\nSHA-256 Hash Results:")
 
 for file in sorted(samples_folder.iterdir()):
-    if file.name.startswith("sample_") and file.is_file():
+    if file.is_file() and file.name not in ("hashes_reference.csv", "README.txt"):
         file_hash = calculate_sha256(file)
         if file_hash is not None:
             print(f"{file.name}: {file_hash}")
@@ -83,7 +85,7 @@ known_hashes = load_reference_hashes(reference_file)
 print("\nReference Hash Comparison:")
 
 for file in sorted(samples_folder.iterdir()):
-    if file.name.startswith("sample_") and file.is_file():
+    if file.name not in ("hashes_reference.csv", "README.txt") and file.is_file():
         file_hash = calculate_sha256(file)
 
         if file_hash is None:
@@ -98,7 +100,7 @@ def find_duplicates(folder):
     hash_groups = {}
 
     for file in sorted(folder.iterdir()):
-        if file.is_file() and file.name.startswith("sample_"):
+        if file.is_file() and file.name not in ("hashes_reference.csv", "README.txt"):
             file_hash = calculate_sha256(file)
 
             if file_hash is None:
@@ -142,7 +144,7 @@ def get_file_metadata(file_path):
 print("\nFile Metadata:")
 
 for file in sorted(samples_folder.iterdir()):
-    if file.is_file() and file.name.startswith("sample_"):
+    if file.is_file() and file.name not in ("hashes_reference.csv", "README.txt"):
         metadata = get_file_metadata(file)
 
         print(f"\nFilename: {metadata['filename']}")
@@ -166,7 +168,7 @@ def generate_report(folder, known_hashes):
         unknown_files = 0
 
         for file in sorted(folder.iterdir()):
-            if not file.is_file() or not file.name.startswith("sample_"):
+            if not file.is_file() or not file.name not in ("hashes_reference.csv", "README.txt"):
                 continue
 
             total_files += 1
